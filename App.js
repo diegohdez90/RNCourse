@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react';
-import { Button, FlatList, StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
 import GoalInput from './components/Input/GoalInput';
 import GoalItem from './components/Item/GoalItem';
 
 export default function App() {
-  const [goal, setGoal] = useState('');
   const [goals, setGoals] = useState([])
 
-  const onChangeGoalText = (v) => {
-    setGoal(v)
-  }
-
-  const onAddGoal = () => {
+  const onAddGoal = (goal) => {
     setGoals(prev => [...prev, goal])
   }
-
-  useEffect(() => {
-    setGoal('');
-  },[goals]);
 
   return (
     <View style={styles.container}>      
       <GoalInput
-        goal={goal}
-        onChangeGoalText={onChangeGoalText}
         onAddGoal={onAddGoal}
       />
       <View style={styles.goalsContainer}>

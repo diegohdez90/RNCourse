@@ -1,11 +1,21 @@
 import { Button, StyleSheet, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function GoalInput({
-  goal,
-  onChangeGoalText,
   onAddGoal
 }) {
+  const [goal, setGoal] = useState('');
+
+  const onChangeGoalText = (v) => {
+    setGoal(v)
+  }
+
+  const onAddGoalHandler = () => onAddGoal(goal);
+
+  useEffect(() => {
+    setGoal('');
+  }, [onAddGoal])
+
   return (
     <View
         style={styles.inputContainer}
@@ -18,7 +28,7 @@ export default function GoalInput({
       />
       <Button
         title='Add goal'
-        onPress={onAddGoal}
+        onPress={onAddGoalHandler}
       />
     </View>
   )

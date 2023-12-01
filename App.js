@@ -36,7 +36,9 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         {
-          goals.map((itemGoal, indexGoal) => <Text key={indexGoal.toString()}>{itemGoal}</Text>)
+          goals.map((itemGoal, indexGoal) => <View key={indexGoal.toString()} style={styles.goalItem}>
+            <Text style={styles.goalItemText}>{itemGoal}</Text>
+          </View>)
         }
       </View>
     </View>
@@ -68,5 +70,15 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 3
+  },
+  goalItem: {
+    flexDirection: 'row',
+    margin: 4,
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: '#5e0acc',
+  },
+  goalItemText: {
+    color: 'white'
   }
 });

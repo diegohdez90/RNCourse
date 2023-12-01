@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [goal, setGoal] = useState('');
@@ -15,7 +15,6 @@ export default function App() {
 
   useEffect(() => {
     setGoal('');
-    console.log('goals', goals);
   },[goals]);
 
   return (
@@ -35,13 +34,13 @@ export default function App() {
         />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView alwaysBounceVertical={false}>
-          {
-            goals.map((itemGoal, indexGoal) => <View key={indexGoal.toString()} style={styles.goalItem}>
-              <Text style={styles.goalItemText}>{itemGoal}</Text>
-            </View>)
-          }
-        </ScrollView>
+        <FlatList
+          data={goals}
+          renderItem={(itemGoal) => <View key={itemGoal.index} style={styles.goalItem}>
+            <Text style={styles.goalItemText}>{itemGoal.item}</Text>
+          </View>}
+          keyExtractor={(_, index) => index}
+          alwaysBounceVertical={false} /> 
       </View>
     </View>
   );

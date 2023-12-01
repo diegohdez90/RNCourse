@@ -1,21 +1,39 @@
-import { StyleSheet, TextInput } from 'react-native'
+import { Button, StyleSheet, TextInput, View } from 'react-native'
 import React from 'react'
 
 export default function GoalInput({
   goal,
   onChangeGoalText,
+  onAddGoal
 }) {
   return (
-    <TextInput
-      style={styles.textInput}
-      placeholder='Type your goal'
-      value={goal}
-      onChangeText={onChangeGoalText}
-    />
+    <View
+        style={styles.inputContainer}
+      >
+      <TextInput
+        style={styles.textInput}
+        placeholder='Type your goal'
+        value={goal}
+        onChangeText={onChangeGoalText}
+      />
+      <Button
+        title='Add goal'
+        onPress={onAddGoal}
+      />
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 24,
+    borderBottomWidth: 3,
+    borderBottomColor: '#ccc'
+  },
   textInput: {
     borderColor: '#666',
     borderRadius: 8,

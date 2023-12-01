@@ -20,16 +20,12 @@ export default function App() {
   },[goals]);
 
   return (
-    <View style={styles.container}>
-      <View
-        style={styles.inputContainer}
-      >
-        <GoalInput goal={goal} onChangeGoalText={onChangeGoalText} />
-        <Button
-          title='Add goal'
-          onPress={onAddGoal}
-        />
-      </View>
+    <View style={styles.container}>      
+      <GoalInput
+        goal={goal}
+        onChangeGoalText={onChangeGoalText}
+        onAddGoal={onAddGoal}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={goals}
@@ -46,15 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingBottom: 24,
-    borderBottomWidth: 3,
-    borderBottomColor: '#ccc'
   },
   goalsContainer: {
     flex: 3

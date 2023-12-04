@@ -15,7 +15,6 @@ export default function GoalItem({
   }
   return (
       <View
-        key={itemGoal.index}
         style={styles.goalItem}>
         <Pressable
           android_ripple={{

@@ -30,6 +30,7 @@ export default function App() {
         <FlatList
           data={goals}
           renderItem={(item) => <GoalItem
+            key={item.index}
             itemGoal={item}
             deleteItem={onDeleteGoal}
           />}

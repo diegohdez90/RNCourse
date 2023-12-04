@@ -1,8 +1,16 @@
-import { Button, StyleSheet, TextInput, View } from 'react-native'
+import { 
+  Button,
+  Modal,
+  StyleSheet,
+  TextInput,
+  View
+} from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 export default function GoalInput({
-  onAddGoal
+  visible,
+  onAddGoal,
+  onToggleModal
 }) {
   const [goal, setGoal] = useState('');
 
@@ -10,27 +18,35 @@ export default function GoalInput({
     setGoal(v)
   }
 
-  const onAddGoalHandler = () => onAddGoal(goal);
+  const onAddGoalHandler = () => {
+    onAddGoal(goal);
+    onToggleModal();``
+  }
 
   useEffect(() => {
     setGoal('');
   }, [onAddGoal])
 
   return (
-    <View
-        style={styles.inputContainer}
-      >
-      <TextInput
-        style={styles.textInput}
-        placeholder='Type your goal'
-        value={goal}
-        onChangeText={onChangeGoalText}
-      />
-      <Button
-        title='Add goal'
-        onPress={onAddGoalHandler}
-      />
-    </View>
+    <Modal
+      visible={visible}
+      animationType='slide'
+    >
+      <View
+          style={styles.inputContainer}
+        >
+        <TextInput
+          style={styles.textInput}
+          placeholder='Type your goal'
+          value={goal}
+          onChangeText={onChangeGoalText}
+        />
+        <Button
+          title='Add goal'
+          onPress={onAddGoalHandler}
+        />
+      </View>
+    </Modal>
   )
 }
 

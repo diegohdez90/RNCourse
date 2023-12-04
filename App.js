@@ -1,12 +1,22 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  View
+} from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuid } from 'uuid';
 import GoalInput from './components/Input/GoalInput';
 import GoalItem from './components/Item/GoalItem';
 
 export default function App() {
+  const [open, setOpen] = useState(false);
   const [goals, setGoals] = useState([])
+
+  const onToggleModal = () => {
+    setOpen(prev => !prev);
+  }
 
   const onAddGoal = (goal) => {
     setGoals(prev => [...prev, {
@@ -23,8 +33,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>      
+      <Button
+        title='Add Goal'
+        color='#2512d0'
+        onPress={onToggleModal}
+      />
       <GoalInput
+        visible={open}
         onAddGoal={onAddGoal}
+        onToggleModal={onToggleModal}
       />
       <View style={styles.goalsContainer}>
         <FlatList

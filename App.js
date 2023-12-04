@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Button,
   FlatList,
@@ -30,6 +30,10 @@ export default function App() {
       return prev.filter(item => item.id !== id);
     });
   }
+
+  useEffect(() => {
+    setOpen(false);
+  }, [goals])
 
   return (
     <View style={styles.container}>      

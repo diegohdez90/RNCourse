@@ -20,7 +20,6 @@ export default function GoalInput({
 
   const onAddGoalHandler = () => {
     onAddGoal(goal);
-    onToggleModal();``
   }
 
   useEffect(() => {

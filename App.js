@@ -5,6 +5,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import 'react-native-get-random-values';
 import { v4 as uuid } from 'uuid';
 import GoalInput from './components/Input/GoalInput';
@@ -36,29 +37,32 @@ export default function App() {
   }, [goals])
 
   return (
-    <View style={styles.container}>      
-      <Button
-        title='Add Goal'
-        color='#2512d0'
-        onPress={onToggleModal}
-      />
-      <GoalInput
-        visible={open}
-        onAddGoal={onAddGoal}
-        onToggleModal={onToggleModal}
-      />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={goals}
-          renderItem={(item) => <GoalItem
-            key={item.index}
-            itemGoal={item}
-            deleteItem={onDeleteGoal}
-          />}
-          keyExtractor={(item, _) => item.id}
-          alwaysBounceVertical={false} /> 
+    <>
+      <StatusBar style='light' />
+      <View style={styles.container}>      
+        <Button
+          title='Add Goal'
+          color='#2512d0'
+          onPress={onToggleModal}
+        />
+        <GoalInput
+          visible={open}
+          onAddGoal={onAddGoal}
+          onToggleModal={onToggleModal}
+        />
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={goals}
+            renderItem={(item) => <GoalItem
+              key={item.index}
+              itemGoal={item}
+              deleteItem={onDeleteGoal}
+            />}
+            keyExtractor={(item, _) => item.id}
+            alwaysBounceVertical={false} /> 
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 

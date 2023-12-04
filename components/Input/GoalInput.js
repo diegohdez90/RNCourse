@@ -49,10 +49,12 @@ export default function GoalInput({
           <Button
             title='Add goal'
             onPress={onAddGoalHandler}
+            color='#18b85d'
           />
           <Button
             title='Cancel'
             onPress={onToggleModal}
+            color='#c21818'
           />
         </View>
       </View>
@@ -65,26 +67,25 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingBottom: 24,
     borderBottomWidth: 3,
     borderBottomColor: '#ccc',
-    backgroundColor: '#200f5c',
+    backgroundColor: '#403de7',
     gap: 8,
     padding: 32
   },
   image: {
     width: 100,
     height: 100,
-    margin: 20
+    margin: 24
   },
   textInput: {
-    borderColor: '#666',
+    borderColor: '#352f2f',
     borderRadius: 8,
     borderWidth: 2,
     width: '100%',
-    marginEnd: 8,
     padding: 8,
-    backgroundColor: 'white'
+    backgroundColor: '#ece4e4',
+    color: '#03009b'
   },
   actions: {
     flexDirection: 'row',

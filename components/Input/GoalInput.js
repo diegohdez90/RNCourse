@@ -41,10 +41,16 @@ export default function GoalInput({
           value={goal}
           onChangeText={onChangeGoalText}
         />
-        <Button
-          title='Add goal'
-          onPress={onAddGoalHandler}
-        />
+        <View style={styles.actions}>
+          <Button
+            title='Add goal'
+            onPress={onAddGoalHandler}
+          />
+          <Button
+            title='Cancel'
+            onPress={onToggleModal}
+          />
+        </View>
       </View>
     </Modal>
   )
@@ -53,19 +59,25 @@ export default function GoalInput({
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     paddingBottom: 24,
     borderBottomWidth: 3,
-    borderBottomColor: '#ccc'
+    borderBottomColor: '#ccc',
+    gap: 8,
+    margin: 16,
+    padding: 8
   },
   textInput: {
     borderColor: '#666',
     borderRadius: 8,
     borderWidth: 2,
-    width: '60%',
+    width: '100%',
     marginEnd: 8,
     padding: 8
   },
+  actions: {
+    flexDirection: 'row',
+    gap: 16
+  }
 });

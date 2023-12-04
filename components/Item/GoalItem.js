@@ -14,26 +14,37 @@ export default function GoalItem({
     deleteItem(itemGoal.item.id)
   }
   return (
-    <Pressable
-      onPress={onRemove}>
       <View
         key={itemGoal.index}
         style={styles.goalItem}>
-        <Text style={styles.goalItemText}>{itemGoal.item.goal}</Text>
+        <Pressable
+          android_ripple={{
+            color: '#bddddd'
+          }}
+          style={(state) => {
+            if (state.pressed) {
+              return styles.pressed
+            }
+          }}
+          onPress={onRemove}
+        >
+          <Text style={styles.goalItemText}>{itemGoal.item.goal}</Text>
+        </Pressable>
       </View>
-    </Pressable>
   )
 }
 
 const styles = StyleSheet.create({
   goalItem: {
-    flexDirection: 'row',
     margin: 4,
-    padding: 8,
     borderRadius: 8,
     backgroundColor: '#5e0acc',
   },
+  pressed: {
+    opacity: 0.5
+  },
   goalItemText: {
-    color: 'white'
+    color: 'white',
+    padding: 8,
   }
 });

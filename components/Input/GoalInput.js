@@ -3,7 +3,8 @@ import {
   Modal,
   StyleSheet,
   TextInput,
-  View
+  View,
+  Image
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
@@ -32,8 +33,12 @@ export default function GoalInput({
       animationType='slide'
     >
       <View
-          style={styles.inputContainer}
-        >
+        style={styles.inputContainer}
+      >
+        <Image
+          style={styles.image}
+          source={require('../../assets/images/goal.png')}
+        />
         <TextInput
           style={styles.textInput}
           placeholder='Type your goal'
@@ -63,9 +68,14 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     borderBottomWidth: 3,
     borderBottomColor: '#ccc',
+    backgroundColor: '#200f5c',
     gap: 8,
-    margin: 16,
-    padding: 8
+    padding: 32
+  },
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20
   },
   textInput: {
     borderColor: '#666',
@@ -73,7 +83,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: '100%',
     marginEnd: 8,
-    padding: 8
+    padding: 8,
+    backgroundColor: 'white'
   },
   actions: {
     flexDirection: 'row',
